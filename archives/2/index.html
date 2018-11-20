@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          jinShine
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite-url/archives/2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/Blog_Background.png') 
+            /*config*/
+        
+    }
+    
+    #signature{
+        background-image: url('/null');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="site-heading">
+                        <h1>jinShine 블로그</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">기억하고 싶은것 정리하려 합니다.</span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">jinShine 블로그</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
+
+
+<div class="post-preview">
+
+    <a href="/2018/07/08/iOS/ARC(Automatic Reference Counting)/">
+        <h2 class="post-title">
+            [iOS] ARC(Automatic Reference Counting)
+        </h2>
+        <h3 class="post-subtitle">
+            ARC 메모리 개념(Retain Cycle, strong, weak, unowned)에 대해 알아 보겠습니다.
+        </h3>
+        <div class="post-content-preview">
+            ARC
+`ARC₩는 Automatic Reference Counting의 약자로 기존에 수동(MRC라고 함)으로 개발자가 직접 retain/release를 통해 reference counting을 관리해야 하는 부분을 자동으로 관리해줍니다.
+Memory Management without ARC
+
+GC (Garbage Collection)
+
+정기적으로 ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-07-08
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#iOS" title="iOS">iOS</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/07/06/iOS/UIImagePickerController 예제/">
+        <h2 class="post-title">
+            [iOS] UIImagePickerController
+        </h2>
+        <h3 class="post-subtitle">
+            UIImagePickerController를 통해 사진,동영상 촬영/저장에 대해 알아보겠습니다.
+        </h3>
+        <div class="post-content-preview">
+            UIImagePickerController
+사진, 동영상 촬영, 저장에 관해 포스트 해보도록 하겠습니다.
+먼저 간단하게 앨범,카메라,딜레이촬영,동영상,Editing변경버튼을 만들어 간단한 기능 소개를 해보겠습니다.
+
+만들어보죠
+UIImagePickerController 객체 생성
+1private let imagePickerController = UII......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-07-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#iOS" title="iOS">iOS</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/07/06/iOS/Shortcuts/">
+        <h2 class="post-title">
+            [iOS] Shortcuts
+        </h2>
+        <h3 class="post-subtitle">
+            Xcode에서 사용하는 팁과 단축키에 대해 알아보겠습니다.
+        </h3>
+        <div class="post-content-preview">
+            Shortcuts
+오늘은 Xcode를 사용하면서 유용한 팁이나 단축키에 관해 알아 보겠습니다.
+너무 많아서 하나씩 해보면서 몸에 익혀야겠어요.
+
+
+
+
+
+
+
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-07-06
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#iOS" title="iOS">iOS</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/07/05/iOS/TabbarController/">
+        <h2 class="post-title">
+            [iOS] TabbarController
+        </h2>
+        <h3 class="post-subtitle">
+            TabbarController 대해 알아 보겠습니다.
+        </h3>
+        <div class="post-content-preview">
+            TabbarController?
+
+한가지를 선택할 수 있는 라디오 스타일의 컨테이너 뷰 컨트롤러.
+여기서 선택은 표시할 자식 뷰 컨트롤러를 말합니다.
+
+
+UITabBar
+
+하나 이상의 버튼을 이용해 서로 다른 작업이나 뷰, 모델 등을 선택해 제어하기 위한 바 보통 UITabBarController 와 결합해 많이 쓰지만 단독으로도 활용 가능 UIToo......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-07-05
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#iOS" title="iOS">iOS</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/07/05/iOS/NotificationCenter/">
+        <h2 class="post-title">
+            [iOS] NotificationCenter
+        </h2>
+        <h3 class="post-subtitle">
+            NotificationCenter에 대해 알아 보겠습니다.
+        </h3>
+        <div class="post-content-preview">
+            NotificationCenter
+NotificationCenter의 동작에 대해 먼저 이야기 해보겠습니다.
+
+NotificationCenter에 등록된 Event가 발생하면 해당 Event들에 대한 행동을 취하는것.
+앱 내에서 아무데서나 메시지를 던지면 앱 내의 아무데서나 이 메시지를 받을 수 있게 해 주는 것이 NSNotificationCenter......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-07-05
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#iOS" title="iOS">iOS</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/07/04/iOS/UIDocumentInteractionController/">
+        <h2 class="post-title">
+            [iOS] UIDocumentInteractionController
+        </h2>
+        <h3 class="post-subtitle">
+            앱에서 직접 파일 형식을 처리 할 수 없는 파일을 미리보기와 파일을 다른앱에 전송해주는 컨트롤러 대해 알아 보겠습니다.
+        </h3>
+        <div class="post-content-preview">
+            UIDocumentInteractionController
+
+앱에서 직접 파일 형식을 처리 할 수 없는 파일을 미리보기와 파일을 다른앱에 전송해주는 컨트롤러입니다.
+
+아이폰을 사용하실때 이런 화면을 많이 보셨을거에요
+
+UIDocumentInteractionController에 대해 알아보겠습니다.
+사용법도 간단합니다.
+
+DocumentInteractio......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-07-04
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#iOS" title="iOS">iOS</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/07/02/iOS/앱 샌드박스(App Sandbox)와 Container Directory/">
+        <h2 class="post-title">
+            [iOS] 앱 샌드박스(App Sandbox)와 Container Directory
+        </h2>
+        <h3 class="post-subtitle">
+            앱 샌드박스(App Sandbox)와 Container Directory개념에 대해 알아 보겠습니다.
+        </h3>
+        <div class="post-content-preview">
+            Sandbox
+
+샌드박스(Sandbox)란 미국에서 어린아이를 보호하기 위해 모래통(Sandbox)에서만 놀도록 하는데서 유래한 보안 모델을 말합니다. 즉, iOS는 기본적으로 앱 마다 별도의 파일을 생성하여 공유되지 않도록 하고 외부로부터 들어온 접근에 대해 보호되는 영역으로 시스템이 부정적으로 조작되는것을 막는 보안 형태입니다.
+샌드박스가 있고 없......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-07-02
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#iOS" title="iOS">iOS</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/06/10/MongoDB/기본적인 명령어/">
+        <h2 class="post-title">
+            [MongoDB] 기본적인 명령어
+        </h2>
+        <h3 class="post-subtitle">
+            기본적인 명령어에 대해 알아보겠습니다.
+        </h3>
+        <div class="post-content-preview">
+            기본 명령어
+들어가기에 앞서, mongo Shell에서 쓰이는 문법은 기본적으로 Javascript로 되어 있습니다.
+서버실행
+
+mongod
+
+서버 접속
+
+mongo
+
+서버 접속 까지 완료해줍니다.
+DB 생성
+use DATABASE_NAME명령어를 통해서 Database를 생성할 수 있습니다.
+
+use testDB
+switched to db testD......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-06-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MongoDB" title="MongoDB">MongoDB</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/06/07/iOS/오토레이아웃(AutoLayout)과 Layout 개념/">
+        <h2 class="post-title">
+            [iOS] 오토레이아웃(AutoLayout)과 Layout 개념
+        </h2>
+        <h3 class="post-subtitle">
+            오토레이아웃(AutoLayout)과 Layout개념들에 대해 알아 보겠습니다.
+        </h3>
+        <div class="post-content-preview">
+            AutoLayout
+Autolayout의 개념들에 관해 알아 보겠습니다.
+
+AutoLayout은 뷰에 주어진 제약조건에 따라 뷰의 크기와 위치를 동적으로 계산해 배치하느것으로,
+외부 또는 내부의 변화에 동적으로 반응하여 유저 인터페이스 구성합니다.
+
+iOS에선 이러한 layout을 구성할때 3가지의 주요 접근 방식이 있습니다.
+
+Frame 기반의 프로......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-06-07
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#iOS" title="iOS">iOS</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/06/07/MongoDB/BSON의 데이터 타입/">
+        <h2 class="post-title">
+            [MongoDB] BSON의 데이터 타입
+        </h2>
+        <h3 class="post-subtitle">
+            MongoDB의 BSON의 데이터 타입에 대해 알아보겠습니다.
+        </h3>
+        <div class="post-content-preview">
+            BSON이란?
+Binary JSON(JavaScript Object Notaion)의 의미
+JSON의 일부지만 MongoDB에서 JSON으로는 부족함이 있어, 데이터를 저장하기 위한 BSON을 만듬.
+BSON 예시
+12345678910var document = &#123;  _id: ObjectId("579081734598df19822318"),   ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-06-07
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MongoDB" title="MongoDB">MongoDB</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/archives/3/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+            </div>
+
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Featured Tags -->
+
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+            
+            <a href="/tags/#MongoDB" title="MongoDB" rel="4">MongoDB</a>
+            
+        
+            
+            <a href="/tags/#Swift" title="Swift" rel="19">Swift</a>
+            
+        
+            
+            <a href="/tags/#Algorithm" title="Algorithm" rel="2">Algorithm</a>
+            
+        
+            
+            <a href="/tags/#iOS" title="iOS" rel="18">iOS</a>
+            
+        
+            
+            <a href="/tags/#컴퓨터 기초" title="컴퓨터 기초" rel="3">컴퓨터 기초</a>
+            
+        
+    </div>
+</section>
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
+
+        
+            <img id = "avatar_pic" src="/img/Seungjin_Profile.jpeg" />
+        
+
+        
+            <p>Mobile Developer</p>
+        
+
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
+
+            
+
+            
+
+            
+                <li>
+                    <a target="_blank"  href="https://github.com/jinShine">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+            
+            
+        </ul>
+    </div>
+</section>
+        <hr>
+    
+        
+  <h5>RECENT POSTS</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/2018/09/11/Swift/18.프로토콜 지향 프로그래밍(Protocol-Oriented Programming)/">[Swift] 프로토콜 지향 프로그래밍(Protocol-Oriented Programming)</a>
+        </li>
+      
+        <li>
+          <a href="/2018/09/04/Swift/17.Magnitude, Abs/">[Swift] Magnitude, Abs</a>
+        </li>
+      
+        <li>
+          <a href="/2018/09/04/Swift/16.Size, Stride, Alignment/">[Swift] Size, Stride, Alignment</a>
+        </li>
+      
+        <li>
+          <a href="/2018/08/29/Swift, Algorithm/Queue/">[Algorithm] 큐(Queue)</a>
+        </li>
+      
+        <li>
+          <a href="/2018/08/29/Swift, Algorithm/Stack/">[Algorithm] 스택(Stack)</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        <hr>
+    
+        
+    <h5>ARCHIVES</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">19</span></li></ul>
+    </div>
+
+        <hr>
+    
+        <!-- Categories -->
+
+        <hr>
+    
+</div>
+
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jinShine">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; jinShine 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite-url/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://yoursite-url/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
