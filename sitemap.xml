@@ -2,17 +2,17 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <sitemap>
-        <loc>http://yoursite-url/post-sitemap.xml</loc>
+        <loc>https://github.com/jinShine/post-sitemap.xml</loc>
         <lastmod>2018-11-20T14:38:13.000Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://yoursite-url/page-sitemap.xml</loc>
+        <loc>https://github.com/jinShine/page-sitemap.xml</loc>
         <lastmod>2018-09-15T11:36:38.000Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://yoursite-url/tag-sitemap.xml</loc>
+        <loc>https://github.com/jinShine/tag-sitemap.xml</loc>
         <lastmod>2018-09-15T17:57:52.000Z</lastmod>
     </sitemap>
 
