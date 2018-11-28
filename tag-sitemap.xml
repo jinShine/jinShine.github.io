@@ -9,13 +9,6 @@
     </url>
 
     <url>
-        <loc>https://github.com/jinShine/tags/Swift/</loc>
-        <lastmod>2018-10-30T15:14:44.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://github.com/jinShine/tags/MongoDB/</loc>
         <lastmod>2018-11-17T18:20:04.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -32,6 +25,13 @@
     <url>
         <loc>https://github.com/jinShine/tags/iOS/</loc>
         <lastmod>2018-11-21T16:39:49.271Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://github.com/jinShine/tags/Swift/</loc>
+        <lastmod>2018-11-28T14:12:50.003Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
