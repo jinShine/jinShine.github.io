@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [iOS] Shortcuts - jinShine
+          [iOS] ScrollView - jinShine
         
     </title>
 
-    <link rel="canonical" href="https://github.com/jinShine/2018/07/06/iOS/Shortcuts/">
+    <link rel="canonical" href="https://github.com/jinShine/2018/12/05/iOS/ScrollView/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -93,11 +93,11 @@
                               <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
                             
                         </div>
-                        <h1>[iOS] Shortcuts</h1>
-                        <h2 class="subheading">Xcode에서 사용하는 팁과 단축키에 대해 알아보겠습니다.</h2>
+                        <h1>[iOS] ScrollView</h1>
+                        <h2 class="subheading">ScrollView 이벤트와 델리게이트에 대해 알아 보겠습니다.</h2>
                         <span class="meta">
                             Posted by jinShine on
-                            2018-07-06
+                            2018-12-05
                         </span>
                     </div>
                 
@@ -214,16 +214,44 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="shortcuts">Shortcuts</span></h1>
-<p>오늘은 Xcode를 사용하면서 유용한 팁이나 단축키에 관해 알아 보겠습니다.<br>
-너무 많아서 하나씩 해보면서 몸에 익혀야겠어요.</p>
-<p><img src="https://i.imgur.com/ajLyNMm.png" alt="Imgur"><br>
-<img src="https://i.imgur.com/999Leme.png" alt="Imgur"><br>
-<img src="https://i.imgur.com/gQQudeh.png" alt="Imgur"><br>
-<img src="https://i.imgur.com/vm344gH.png" alt="Imgur"><br>
-<img src="https://i.imgur.com/vep5UZR.png" alt="Imgur"><br>
-<img src="https://i.imgur.com/OnvGZJK.png" alt="Imgur"><br>
-<img src="https://i.imgur.com/QGoVlo4.png" alt="Imgur"></p>
+                <h1><span id="scrollview">ScrollView</span></h1>
+<p>화면의 크기보다 더 큰 콘텐츠의 크기를 가진 컨텐츠를 표현하기 위한 뷰 입니다.</p>
+<h3><span id="스크롤-뷰의-크기와-콘텐츠의-크기">스크롤 뷰의 크기와 콘텐츠의 크기</span></h3>
+<p><code>뷰의 크기</code>는 프레임(frame)을 이용해서 뷰 자체의 크기를 얻어 올 수 있습니다. <code>스크롤 뷰</code>의 경우에는 콘텐츠의 크기와 스크롤 뷰에 나타나는 위치 정보를 다뤄야합니다.</p>
+<p><img src="https://i.imgur.com/PmjrnZt.png" alt="Imgur"></p>
+<ul>
+<li>
+<p><strong>Content size</strong> : CGSize 구조체를 사용하고 콘텐츠의 크기를 설정</p>
+</li>
+<li>
+<p><strong>Content offset</strong> : CGPoint 구조체를 사용하고 콘텐츠가 스크롤 뷰에 표시되는 위치를 설정합니다. 곧 Bounds의 X좌표, Y좌표를 의미하는 것으로서 스크롤을 한다는 자체가 ContentOffset이 변하는 것입니다.</p>
+</li>
+<li>
+<p><strong>Content inset</strong> : UIDegeInsets 구조체로 스크롤 뷰에 표시되는 콘텐츠 뷰의 외부 여백의 크기를 위, 왼쪽, 아래, 오른쪽 순서로 설정.<br>
+<a href="">[iOS] ContentOffset과 ContentInset</a></p>
+</li>
+</ul>
+<h3><span id="스크롤-기능">스크롤 기능</span></h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 콘텐츠의 크기</span></span><br><span class="line"><span class="keyword">var</span> contentSize: <span class="type">CGSize</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 콘텐츠의 위치</span></span><br><span class="line"><span class="keyword">var</span> contentOffset: <span class="type">CGPoint</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 스크롤 뷰에 표시되는 콘텐츠 외부의 여백</span></span><br><span class="line"><span class="keyword">var</span> contentInset: <span class="type">UIEdgeInsets</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 스크롤 기능 활성화</span></span><br><span class="line"><span class="keyword">var</span> isScrollEnabled: <span class="type">Bool</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 콘텐츠 가장자리 경계에서 튕기며 돌아오는 속성 설정</span></span><br><span class="line"><span class="keyword">var</span> bounces: <span class="type">Bool</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//원하는 Offset으로 이동한다.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">setContnetOffset</span><span class="params">(<span class="number">_</span> contentOffset: CGPoint, animate: Bool)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 원하는 CGRect위치로 이동한다.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollRectToVisible</span><span class="params">(<span class="number">_</span> rect: CGRect, animated: Bool)</span></span></span><br></pre></td></tr></table></figure>
+<h3><span id="스크롤-이벤트와-델리게이트">스크롤 이벤트와 델리게이트</span></h3>
+<p>스크롤 동작은 사용자가 터치하고 끄는동작(Dragging)으로 시작한다. Dragging하는 속도에 맞춰서 스크롤되다가 손가락을 떼면 스크롤 속도가 줄어들면서(Decelerate) 스크롤 동작이 멈춥니다.</p>
+<p>스크롤 동작에 관련된 UIScrollViewDelegate프로토콜에 정의된 메소드</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 스크롤 뷰를 끌기 시작</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewWillBeginDragging</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 스크롤을 끝냈을때</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewWillEndDragging</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer&lt;CGPoint&gt;)</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidEndDragging</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView, willDecelerate decelerate: Bool)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 스크롤 뷰에서 스크롤 속도가 줄어드는 경우</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewWillBeginDecelerating</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidEndDecelerating</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 스크롤을 할 때마다</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewdidScroll</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span></span><br></pre></td></tr></table></figure>
+<h3><span id="스크롤-상태">스크롤 상태</span></h3>
+<p>사용자가 터치가 닿은 상태인지 끄는 동작인지 체크</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 터치가 닿아있는 중</span></span><br><span class="line"><span class="keyword">var</span> isTracking: <span class="type">Bool</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 끄는 동작 중</span></span><br><span class="line"><span class="keyword">var</span> isDragging: <span class="type">Bool</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 감속 중</span></span><br><span class="line"><span class="keyword">var</span> <span class="type">Decelerating</span>: <span class="type">Bool</span> &#123; <span class="keyword">get</span> &#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="상태바-터치시-최상위로-스크롤">상태바 터치시 최상위로 스크롤</span></h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 가장 위쪽으로 스크롤 기능 사용 여부</span></span><br><span class="line"><span class="keyword">var</span> scrollsToTop: <span class="type">Bool</span></span><br></pre></td></tr></table></figure>
+<p>델리게이트</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewShouldScrollToTop</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span> -&gt; <span class="type">Bool</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidScrollToTop</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span></span><br></pre></td></tr></table></figure>
+<h3><span id="확대-축소">확대 / 축소</span></h3>
+<p>스크롤 뷰가 제공하는 콘텐츠 확대/축소 기능을 사용하려면 스크롤 뷰에 줌 비율을 설정해야합니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 프로퍼티</span></span><br><span class="line"><span class="keyword">var</span> zoomScale: <span class="type">CGFloat</span></span><br><span class="line"><span class="keyword">var</span> minimumZoomScale: <span class="type">CGFloat</span></span><br><span class="line"><span class="keyword">var</span> maximumZoomScale: <span class="type">CGFloat</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 코드</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">zoom</span><span class="params">(to rect: CGRect, animated: Bool)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">setZoomScale</span><span class="params">(<span class="number">_</span> scale: CGFloat, animated: Bool)</span></span></span><br></pre></td></tr></table></figure>
+<p>그리고 스크롤 뷰 델리게이트에서 viewForZoomingInScrollView 메소드를 이용해서 확대/축소를 하는 뷰를 제공해야합니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">viewForZooming</span><span class="params">(<span class="keyword">in</span> scrollView: UIScrollView)</span></span> -&gt; <span class="type">UIView</span>?</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 이런식으로 대상을 리턴시켜주면 확대/ 축소가 가능해집니다.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">viewForZooming</span><span class="params">(<span class="keyword">in</span> scrollView: UIScrollView)</span></span> -&gt; <span class="type">UIView</span>? &#123;</span><br><span class="line">    <span class="keyword">return</span> imageView</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>또 확대 / 축소를 하면 스크롤 뷰는 델리게이트에게 다음의 메소드를 이용해서 확대/축소 동작에 대응할 수 있도록 해줍니다</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidZoom</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span></span><br></pre></td></tr></table></figure>
 
                 
 
@@ -232,12 +260,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2018/07/08/iOS/ARC(Automatic Reference Counting)/" data-toggle="tooltip" data-placement="top" title="[iOS] ARC(Automatic Reference Counting)">&larr; Previous Post</a>
+                            <a href="/2018/12/06/iOS/ContentOffset과 ContentInset/" data-toggle="tooltip" data-placement="top" title="[iOS] ContentOffset과 ContentInset">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2018/07/06/iOS/UIImagePickerController 예제/" data-toggle="tooltip" data-placement="top" title="[iOS] UIImagePickerController">Next Post &rarr;</a>
+                            <a href="/2018/12/04/iOS/Photos 프레임워크/" data-toggle="tooltip" data-placement="top" title="[iOS] Photos 프레임워크">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -311,8 +339,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "https://github.com/jinShine/2018/07/06/iOS/Shortcuts/";
-    var disqus_url = "https://github.com/jinShine/2018/07/06/iOS/Shortcuts/";
+    var disqus_identifier = "https://github.com/jinShine/2018/12/05/iOS/ScrollView/";
+    var disqus_url = "https://github.com/jinShine/2018/12/05/iOS/ScrollView/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
