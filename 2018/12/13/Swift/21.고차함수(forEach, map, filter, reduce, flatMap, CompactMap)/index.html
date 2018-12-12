@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [Swift] 클로저 NoEscaping, Escaping, AutoClosure - 3 - jinShine
+          [Swift] 고차함수 (forEach) - jinShine
         
     </title>
 
-    <link rel="canonical" href="https://github.com/jinShine/2018/05/24/Swift/11.클로저 NoEscaping, Escaping, AutoClosure - 3/">
+    <link rel="canonical" href="https://github.com/jinShine/2018/12/13/Swift/21.고차함수(forEach, map, filter, reduce, flatMap, CompactMap)/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -93,11 +93,11 @@
                               <a class="tag" href="/tags/#Swift" title="Swift">Swift</a>
                             
                         </div>
-                        <h1>[Swift] 클로저 NoEscaping, Escaping, AutoClosure - 3</h1>
-                        <h2 class="subheading">NoEscaping, Escaping, AutoClosure에 대해 알아 보겠습니다.</h2>
+                        <h1>[Swift] 고차함수 (forEach)</h1>
+                        <h2 class="subheading">forEach에 대해 알아 보겠습니다.</h2>
                         <span class="meta">
                             Posted by jinShine on
-                            2018-05-24
+                            2018-12-13
                         </span>
                     </div>
                 
@@ -214,58 +214,25 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <blockquote>
-<ul>
-<li>
-<p>Swift 3.0 이전 - @escaping 이 기본</p>
-</li>
-<li>
-<p>Swift 3.0 이후 - @noescaping 이 기본</p>
-</li>
-<li>
-<p>@noescaping -&gt; @noescaping 가능</p>
-</li>
-<li>
-<p>@noescaping -&gt; @escaping   불가능</p>
-</li>
-<li>
-<p>@escaping   -&gt; @noescaping, @escaping 둘 다 가능</p>
-</li>
-</ul>
-</blockquote>
-<h1><span id="noescaping">@noescaping</span></h1>
-<hr>
-<p>기본값이 noescaping<br>
-해당 함수 범위 내에서만 동작하도록 하고 범위 밖에서는 사용하지 못하도록 한다.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">someClass</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> closure: (() -&gt; ()) = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">noEscapingClosure</span><span class="params">(<span class="number">_</span> param: <span class="params">()</span></span></span> -&gt; ()) &#123;</span><br><span class="line">    <span class="comment">// 에러 발생 @escaping을 명시해줘야된다.</span></span><br><span class="line">    <span class="keyword">self</span>.closure = param</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1><span id="escaping">@escaping</span></h1>
-<hr>
-<p>위의 예제처럼 param을 메서드 밖에서도 사용하고 싶다면 @escaping을 추가해주어야 합니다.<br>
-클로저가 함수로부터 escaping한다는 것은 해당 함수의 인자로 클로저가 전달되지만, 함수가 반환된 후 실행 되는 것을 의미합니다. 함수의 인자가 함수의 영역을 탈출하여 함수 밖에서 사용할 수 있는 개념은 기존에 우리가 알고 있던 변수의 scope 개념을 무시합니다. 왜냐하면 함수에서 선언된 로컬 변수가 로컬 변수의 영역을 뛰어넘어 함수 밖 에서도 유효하기 때문입니다.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">escapingClosure</span><span class="params">(<span class="number">_</span> param: @escaping <span class="params">()</span></span></span> -&gt; ()) &#123;</span><br><span class="line">    <span class="keyword">self</span>.closure = param</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>보통 completion handler에 사용됩니다.<br>
-비동기 작업으로 함수가 종료되고 난 후 작업이 끝나고 호출할 필요가 있는 클로져를 사용해야 할 때 탈출 클로저(Escaping Closure)가 필요합니다.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">retrieveFeed</span><span class="params">(url: URLConvertible,</span></span></span><br><span class="line"><span class="function"><span class="params">                      method: HTTPMethod,</span></span></span><br><span class="line"><span class="function"><span class="params">                      parameters: Parameters?,</span></span></span><br><span class="line"><span class="function"><span class="params">                      headers: HTTPHeaders?,</span></span></span><br><span class="line"><span class="function"><span class="params">                      completion: @escaping <span class="params">([Post])</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">Alamofire</span></span><br><span class="line">            .request(url, method: method, parameters: parameters)</span><br><span class="line">            .responseData(completionHandler: &#123; response <span class="keyword">in</span></span><br><span class="line">                <span class="keyword">switch</span> response.result &#123;</span><br><span class="line">                <span class="keyword">case</span> .success(<span class="keyword">let</span> value):</span><br><span class="line">                    <span class="keyword">do</span> &#123;</span><br><span class="line">                        <span class="keyword">let</span> result = <span class="keyword">try</span> <span class="type">JSONDecoder</span>().decode([<span class="type">Post</span>].<span class="keyword">self</span>, from: value)</span><br><span class="line">                        completion(result)</span><br><span class="line">                    &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">                        <span class="built_in">print</span>(error)</span><br><span class="line">                    &#125;</span><br><span class="line">                <span class="keyword">case</span> .failure(<span class="keyword">let</span> error):</span><br><span class="line">                    <span class="built_in">print</span>(error)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h1><span id="autoclosure">@autoclosure</span></h1>
-<ul>
-<li>파라미터가 없는 표현식을 클로저로 변환하는 키워드</li>
-<li>파라미터가 없는 클로저에 사용 e.g. ()-&gt;(), ()-&gt;Int</li>
-</ul>
-<p>closure 파라미터에 대입할 내용을 일반 함수 파라미터처럼 입력</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value2 = <span class="number">10</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">autoclosure</span><span class="params">(<span class="number">_</span> arg1: String, <span class="number">_</span> arg2: @autoclosure <span class="params">()</span></span></span> -&gt; ()) &#123;</span><br><span class="line">  <span class="built_in">print</span>(arg1)</span><br><span class="line">  arg2()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">autoclosure(<span class="string">"arg1"</span>, <span class="built_in">print</span>(<span class="string">"Autoclosure"</span>))</span><br><span class="line">autoclosure(<span class="string">"arg1"</span>, value2 += <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Autoclosure 파라미터에 일반 클로저 형태는 사용 불가</span></span><br><span class="line"><span class="comment">// autoclosure("arg1") &#123;</span></span><br><span class="line"><span class="comment">//  print("Compile Error")</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+                <h1><span id="foreach">forEach</span></h1>
+<p>for-in과 동일하게 각각의 Element들을 호출 합니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> array &#123;</span><br><span class="line">    <span class="built_in">print</span>(num)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;출력&gt;</span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="comment">//3</span></span><br><span class="line"><span class="comment">//4</span></span><br><span class="line"><span class="comment">//5</span></span><br><span class="line"></span><br><span class="line">array.forEach &#123;</span><br><span class="line">    <span class="built_in">print</span>($<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;출력&gt;</span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="comment">//3</span></span><br><span class="line"><span class="comment">//4</span></span><br><span class="line"><span class="comment">//5</span></span><br></pre></td></tr></table></figure>
+<h3><span id="차이점">차이점</span></h3>
+<p><strong>forEach</strong>에서는 <code>break</code>, <code>continue</code> 구문을 사용할 수 없고,<br>
+<code>return</code>을 통해서 빠져나갈 수 있습니다. <strong>(continue처럼 동작함)</strong></p>
+<p><strong>for-in</strong>에서는 <code>break</code>, <code>continue</code>을 사용할 수 있고,<br>
+<code>return</code>을 이용해서 빠져나오려면 에러가 납니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//-------[for-in]-------</span></span><br><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> array &#123;</span><br><span class="line">    <span class="keyword">if</span> num == <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(num)</span><br><span class="line">&#125;</span><br><span class="line">&lt;출력&gt;</span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> array &#123;</span><br><span class="line">    <span class="keyword">if</span> num == <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(num)</span><br><span class="line">&#125;</span><br><span class="line">&lt;출력&gt;</span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//3</span></span><br><span class="line"><span class="comment">//4</span></span><br><span class="line"><span class="comment">//5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &lt;오류&gt;</span></span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> array &#123;</span><br><span class="line">    <span class="keyword">if</span> num == <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="comment">// 에러</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(num)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------[forEach]-------</span></span><br><span class="line"></span><br><span class="line">array.forEach &#123;</span><br><span class="line">    <span class="keyword">if</span> $<span class="number">0</span> == <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>($<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line">&lt;출력&gt;</span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//3</span></span><br><span class="line"><span class="comment">//4</span></span><br><span class="line"><span class="comment">//5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &lt;오류&gt;</span></span><br><span class="line">array.forEach &#123;</span><br><span class="line">    <span class="keyword">if</span> $<span class="number">0</span> == <span class="number">2</span> &#123;</span><br><span class="line">        <span class="comment">//break or continue 사용 불가</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>($<span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/05/24/Swift/9.클로저(Closure) - 1/" data-toggle="tooltip" data-placement="top" title="[Swift] 클로저(Closure) - 1">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2018/05/24/Swift/10.클로저 Capturing - 2/" data-toggle="tooltip" data-placement="top" title="[Swift] 클로저 Capturing - 2">Next Post &rarr;</a>
+                            <a href="/2018/12/06/iOS/ContentOffset과 ContentInset/" data-toggle="tooltip" data-placement="top" title="[iOS] ContentOffset과 ContentInset">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -339,8 +306,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "https://github.com/jinShine/2018/05/24/Swift/11.클로저 NoEscaping, Escaping, AutoClosure - 3/";
-    var disqus_url = "https://github.com/jinShine/2018/05/24/Swift/11.클로저 NoEscaping, Escaping, AutoClosure - 3/";
+    var disqus_identifier = "https://github.com/jinShine/2018/12/13/Swift/21.고차함수(forEach, map, filter, reduce, flatMap, CompactMap)/";
+    var disqus_url = "https://github.com/jinShine/2018/12/13/Swift/21.고차함수(forEach, map, filter, reduce, flatMap, CompactMap)/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
