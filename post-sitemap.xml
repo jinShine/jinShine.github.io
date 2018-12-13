@@ -7,8 +7,16 @@
     </url>
 
     <url>
-        <loc>https://github.com/jinShine/2018/12/13/Swift/21.%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98(forEach,%20map,%20filter,%20reduce,%20flatMap,%20CompactMap)/</loc>
-        <lastmod>2018-12-12T15:23:47.564Z</lastmod>
+        <loc>https://github.com/jinShine/2018/12/13/Swift/21.%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98(1)%20-%20forEach,%20filter,%20reduce/</loc>
+        <lastmod>2018-12-13T14:51:31.747Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://github.com/jinShine/2018/12/14/Swift/22.%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98(2)%20-%20map,%20flatMap,%20compactMap/</loc>
+        <lastmod>2018-12-13T14:44:55.754Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
