@@ -14,7 +14,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [RxSwift] Subject란 - (3) - jinShine
+          [RxSwift] Subject와 Relay - (3) - jinShine
         
     </title>
 
@@ -93,8 +93,8 @@
                               <a class="tag" href="/tags/#Swift" title="Swift">Swift</a>
                             
                         </div>
-                        <h1>[RxSwift] Subject란 - (3)</h1>
-                        <h2 class="subheading">Subject의 개념에 대해 알아 보겠습니다.</h2>
+                        <h1>[RxSwift] Subject와 Relay - (3)</h1>
+                        <h2 class="subheading">Subject와 Relay의 개념에 대해 알아 보겠습니다.</h2>
                         <span class="meta">
                             Posted by jinShine on
                             2019-01-05
@@ -252,6 +252,23 @@ PublishSubject와 달리 항상 <code>직전</code>의 값부터 구독합니다
 최근 검색어 같은 곳에 사용하면 좋을꺼같아요.<br>
 <img src="http://reactivex.io/documentation/operators/images/S.ReplaySubject.png" alt="Reactivex.io"></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> subject = <span class="type">ReplaySubject</span>&lt;<span class="type">Int</span>&gt;.create(bufferSize: <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">subject.onNext(<span class="number">1</span>)</span><br><span class="line">subject.onNext(<span class="number">2</span>)</span><br><span class="line">subject.onNext(<span class="number">3</span>)</span><br><span class="line">subject.onNext(<span class="number">4</span>)</span><br><span class="line">subject.onNext(<span class="number">5</span>)</span><br><span class="line">subject.onNext(<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> subjectOne = subject.subscribe(onNext: &#123; (num) <span class="keyword">in</span></span><br><span class="line">    <span class="built_in">print</span>(num)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">subject.onNext(<span class="number">7</span>)</span><br><span class="line">subject.onNext(<span class="number">8</span>)</span><br><span class="line">subject.onNext(<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">4</span></span><br><span class="line"><span class="comment">5</span></span><br><span class="line"><span class="comment">6</span></span><br><span class="line"><span class="comment">7</span></span><br><span class="line"><span class="comment">8</span></span><br><span class="line"><span class="comment">9</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<br>
+<hr>
+<h1><span id="relay란">Relay란</span></h1>
+<p>Relay Class는 RxCocoa4에서 구현되었고, <code>PublishRelay</code>와 <code>BehaviorRelay</code>클래스가 존재합니다.<br>
+<strong>RxSwift인 <code>Subject</code>와는 다르게 <code>Relay</code>는 RxCocoa의 클래스 입니다.</strong></p>
+<h3><span id="publishrelay">PublishRelay</span></h3>
+<p>PublishRelay는 <code>PublishSubject의 Wrapper</code> 클래스입니다.<br>
+PublishSubject의 특성처럼 구독 이후의 발생하는 이벤트들만 알 수 있습니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">PublishRelay</span>&lt;<span class="title">Element</span>&gt;: <span class="title">ObservableType</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">let</span> _subject: <span class="type">PublishSubject</span>&lt;<span class="type">Element</span>&gt;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">init</span>() &#123;</span><br><span class="line">      _subject = <span class="type">PublishSubject</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="behaviorrelay">BehaviorRelay</span></h3>
+<p>BehaviorRelay는 <code>BehaviorSubject의 Wrapper 클래스</code> 입니다.<br>
+<code>.value</code>를 통해서 현재의 값을 가져올 수 있습니다.<br>
+<code>variable</code>이 Deprecate되면서 소개시켜드리지 않았지만 대신에 <code>BehaviorRelay</code>를 사용하시면 됩니다.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">BehaviorRelay</span>&lt;<span class="title">Element</span>&gt;: <span class="title">ObservableType</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">let</span> _subject: <span class="type">BehaviorSubject</span>&lt;<span class="type">Element</span>&gt;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">var</span> value: <span class="type">Element</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">try</span>! _subject.value()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">init</span>(value: <span class="type">Element</span>) &#123;</span><br><span class="line">      _subject = <span class="type">BehaviorSubject</span>(value: value)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="~subject와-~relay의-차이점">~Subject와 ~Relay의 차이점</span></h3>
+<p>~Subject는 <code>.completed</code>, <code>.error</code>의 이벤트가 발생하면 subscribe가 종료되는 반면,<br>
+~Relay는 <code>.completed</code>, <code>.error</code>를 발생하지 않고 Dispose되기 전까지 계속 작동하기 때문에 UI Event에서 사용하기 적절합니다.</p>
 
                 
 
