@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [iOS] TabbarController - jinShine
+          [Swift] 문자열 다루기 - jinShine
         
     </title>
 
-    <link rel="canonical" href="https://github.com/jinShine/2018/07/05/iOS/TabbarController/">
+    <link rel="canonical" href="https://github.com/jinShine/2019/01/07/Swift/23.Swift 문자열 다루기/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/postImage/iOS-bg.png')
+            background-image: url('/img/postImage/Swift_logo_color.png')
             /*post*/
         
     }
@@ -90,14 +90,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                              <a class="tag" href="/tags/#Swift" title="Swift">Swift</a>
                             
                         </div>
-                        <h1>[iOS] TabbarController</h1>
-                        <h2 class="subheading">TabbarController 대해 알아 보겠습니다.</h2>
+                        <h1>[Swift] 문자열 다루기</h1>
+                        <h2 class="subheading">스위프트에서 문자열을 다루는 방법에 대해서 알아 보겠습니다.</h2>
                         <span class="meta">
                             Posted by jinShine on
-                            2018-07-05
+                            2019-01-07
                         </span>
                     </div>
                 
@@ -214,68 +214,30 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="tabbarcontroller">TabbarController?</span></h1>
-<blockquote>
-<p>한가지를 선택할 수 있는 라디오 스타일의 컨테이너 뷰 컨트롤러.<br>
-여기서 선택은 표시할 자식 뷰 컨트롤러를 말합니다.</p>
-</blockquote>
-<p><img src="https://i.imgur.com/NByMj7F.png" alt="Imgur"></p>
-<h2><span id="uitabbar">UITabBar</span></h2>
-<blockquote>
-<p>하나 이상의 버튼을 이용해 서로 다른 작업이나 뷰, 모델 등을 선택해 제어하기 위한 바 보통 UITabBarController 와 결합해 많이 쓰지만 단독으로도 활용 가능 UIToolbar 와 비슷한 모양이지만 상이한 목적을 지님.</p>
-<ul>
-<li><strong>탭바</strong>는 앱의 모드를 변화하기 위한 것</li>
-<li><strong>툴바</strong>는 현재 뷰컨트롤러의 컨텐츠에 관련된 액션을 수행하기 위한 것</li>
-</ul>
-</blockquote>
-<p><img src="https://i.imgur.com/GAtx7PR.png" alt="Imgur"></p>
-<h2><span id="uitabbaritem">UITabBarITem</span></h2>
-<blockquote>
-<ul>
-<li>하나의 TabBarITem 마다 각각의 ViewController 가 연결<br>
-ViewController 에 tabBarItem 속성을 통해 해당 아이템에 접근 가능</li>
-<li>TabBar에는 최대 5개의 TabBarItem 표현. 5개를 초과할 경우 <strong>More</strong> 아이템으로 대체<br>
-<img src="https://i.imgur.com/1VX98Dj.png" alt="Imgur"></li>
-</ul>
-</blockquote>
-<h2><span id="more">More</span></h2>
-<p><strong>TabbarItem이 <code>5개 이상</code>일때 5번째 Tabbar는 <code>More</code>로 변하게 된다.</strong><br>
-<img src="https://i.imgur.com/ByZg2va.png" alt="Imgur"></p>
-<p>직접 TabbarController를 만들어 봤습니다. TabbarController에는 7개의 ViewController가 있습니다.<br>
-<img src="https://i.imgur.com/2GsREMC.png" alt="Imgur"></p>
-<p>5번째 Tabar는 자동으로 More로 변했으며 More를 누르면 아래의 그림과 같이 선택해서 들어갈 수 있습니다.<br>
-<img src="https://i.imgur.com/jkCHmB4.png?1" alt="Imgur"><br>
-<img src="https://i.imgur.com/k6ItjnZ.png?1" alt="Imgur"></p>
-<h2><span id="tabbarcontoller-life-cycle">TabbarContoller life Cycle</span></h2>
-<p>TabbarController에 3개의 ViewController가 있다고 가정 합니다.</p>
-<p>각 탭을 선택했을때<br>
-<strong>첫번째 탭</strong></p>
-<p>-------- [ FirstVC viewDidLoad ] --------<br>
--------- [ FirstVC viewWillAppear ] --------</p>
-<p>순으로…</p>
-<p><strong>두번째 탭</strong><br>
--------- [ SecondVC viewDidLoad ] --------</p>
-<p>-------- [ SecondVC viewWillAppear ] --------</p>
-<p>순으로…</p>
-<p><strong>첫번째 탭</strong><br>
--------- [ FirstVC viewWillAppear ] --------</p>
-<p><strong>두번째 탭</strong><br>
--------- [ SecondVC viewWillAppear ] --------</p>
-<p>처음탭을 하였을때는 <code>viewDidLoad부터 실행</code>되지만, 다음에 똑같은  탭을 선택했을때는 <strong>viewDidLoad()는 호출되지 않고 viewWillAppear()부터 호출 된다는 사실을 알아야합니다!</strong></p>
-
+                <h1><span id="문자열-다루기">문자열 다루기</span></h1>
+<h3><span id="문자열-길이">문자열 길이</span></h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 문자열 길이 -&gt; count</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> strTest: <span class="type">String</span> = <span class="string">"안녕하십니까?"</span></span><br><span class="line"><span class="built_in">print</span>(strTest.<span class="built_in">count</span>) <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+<h3><span id="문자열-안의-문자">문자열 안의 문자</span></h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 문자열 안의 문자</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 문자열 안에 들어있는 문자를 확인 할때는 [] 대괄호 안에 숫자대신 스위프트에선 Index객체를 넣어 줍니다.</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 첫번째 문자의 위치 : 문자열.startIndex</span></span><br><span class="line"><span class="comment"> 마지막 문자 뒤의 위치 : 문자열.endIndex</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> subFirst = strTest[strTest.startIndex] <span class="comment">// 안</span></span><br><span class="line"><span class="keyword">var</span> subLast = strTest[strTest.index(before: strTest.endIndex)] <span class="comment">// ?</span></span><br></pre></td></tr></table></figure>
+<h3><span id="prefix와-suffix">prefix와 suffix</span></h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> prefix와 suffix</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> hasPrefix : 문자열이 어떤 글자로 시작하는지 확인</span></span><br><span class="line"><span class="comment"> hasSuffix : 문자열이 어떤 글자로 끝나는지 확인</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> strTest.hasPrefix(<span class="string">"안"</span>) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"안으로 시작"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> strTest.hasSuffix(<span class="string">"?"</span>) &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"?로 끝남"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="문자열-안에-문자들-추출">문자열 안에 문자들 추출</span></h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 문자열 안에 문자들 추출</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 다른 언어들은 substring이라는 메서드를 제공하지만</span></span><br><span class="line"><span class="comment"> 스위프트는 범위 연산자를 사용해야됩니다.</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> -&gt; 문자열[index범위]</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> strRange = strTest.index(strTest.startIndex, offsetBy: <span class="number">2</span>) ... strTest.index(strTest.endIndex, offsetBy: -<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(strTest[strRange]) <span class="comment">// 하십니까</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> strRange2 = strTest.index(strTest.startIndex, offsetBy: <span class="number">2</span>) ..&lt; strTest.index(strTest.endIndex, offsetBy: -<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(strTest[strRange2]) <span class="comment">// 하십니</span></span><br></pre></td></tr></table></figure>
+<h3><span id="문자열-안에-문자들-삭제">문자열 안에 문자들 삭제</span></h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 문자열 안에 문자들 삭제</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 다른 언어들은 substring이라는 메서드를 제공하지만</span></span><br><span class="line"><span class="comment"> 스위프트는 범위 연산자를 사용해야됩니다.</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> -&gt; 문자열.removeSubrange[index범위]</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">strTest.removeSubrange(strRange2) <span class="comment">// 안녕까?</span></span><br></pre></td></tr></table></figure>
+<h3><span id="문자열-대소문자-변경">문자열 대소문자 변경</span></h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 문자열 대소문자 변경</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> 소문자로 변환 : 문자열.lowercased</span></span><br><span class="line"><span class="comment"> 대문자로 변환 : 문자열.uppercased</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> userID = <span class="string">"Seungjin429"</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"소문자 :"</span>, userID.lowercased()) <span class="comment">// 소문자 : seungjin429</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"대문자 :"</span>, userID.uppercased()) <span class="comment">// 대문자 : SEUNGJIN429</span></span><br></pre></td></tr></table></figure>
+<h3><span id="문자열-나누기">문자열 나누기</span></h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 문자열 나누기</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> split : 문자열에 들어있는 특정 문자열을 기준으로 문자열을 분리</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> splitStr = <span class="string">"good,blog,jinShine"</span></span><br><span class="line"><span class="keyword">let</span> splitArr = splitStr.<span class="built_in">split</span>(separator: <span class="string">","</span>)</span><br><span class="line"></span><br><span class="line">splitArr.<span class="built_in">map</span> &#123; str <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">print</span>(str)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//good</span></span><br><span class="line"><span class="comment">//blog</span></span><br><span class="line"><span class="comment">//jinShine</span></span><br></pre></td></tr></table></figure>
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/07/06/iOS/UIImagePickerController 예제/" data-toggle="tooltip" data-placement="top" title="[iOS] UIImagePickerController">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2018/07/05/iOS/NotificationCenter/" data-toggle="tooltip" data-placement="top" title="[iOS] NotificationCenter">Next Post &rarr;</a>
+                            <a href="/2019/01/05/RxSwift/3.Subject란/" data-toggle="tooltip" data-placement="top" title="[RxSwift] Subject와 Relay - (3)">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -314,7 +276,7 @@ ViewController 에 tabBarItem 속성을 통해 해당 아이템에 접근 가능
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                          <a class="tag" href="/tags/#Swift" title="Swift">Swift</a>
                         
                     </div>
                 </section>
@@ -349,8 +311,8 @@ ViewController 에 tabBarItem 속성을 통해 해당 아이템에 접근 가능
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "https://github.com/jinShine/2018/07/05/iOS/TabbarController/";
-    var disqus_url = "https://github.com/jinShine/2018/07/05/iOS/TabbarController/";
+    var disqus_identifier = "https://github.com/jinShine/2019/01/07/Swift/23.Swift 문자열 다루기/";
+    var disqus_url = "https://github.com/jinShine/2019/01/07/Swift/23.Swift 문자열 다루기/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
