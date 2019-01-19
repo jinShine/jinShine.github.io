@@ -213,6 +213,40 @@
 
 <div class="post-preview">
 
+    <a href="/2018/06/03/MongoDB/Hello MongoDB/">
+        <h2 class="post-title">
+            [MongoDB] Hello MongoDB
+        </h2>
+        <h3 class="post-subtitle">
+            MongoDB 소개
+        </h3>
+        <div class="post-content-preview">
+            Hello MongoDB
+NoSQL에서 가장 유명한 MongoDB에 대해 알아 보도록 하겠습니다.
+StackOverFlow의 통계를 보시면 1~4위는 RDBMS이고,
+NoSQL에선 MongoDB가 가장 유명하다고 볼 수 있습니다.
+
+기존의 관계형 모델과는 다른 데이터베이스 관리 시스템에 대한 관심이 증가하고 있어 사람들이 많이 배우고 싶어합니다.
+No......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by jinShine on
+            2018-06-03
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#MongoDB" title="MongoDB">MongoDB</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2018/05/29/iOS/iOS UI Guide 개념/">
         <h2 class="post-title">
             [iOS] iOS UI Guide 개념
@@ -388,20 +422,34 @@ type(of:) - 타입확인
 
 <div class="post-preview">
 
-    <a href="/2018/05/24/Swift/10.클로저 Capturing - 2/">
+    <a href="/2018/05/24/Swift/11.클로저 NoEscaping, Escaping, AutoClosure - 3/">
         <h2 class="post-title">
-            [Swift] 클로저 Capturing - 2
+            [Swift] 클로저 NoEscaping, Escaping, AutoClosure - 3
         </h2>
         <h3 class="post-subtitle">
-            Capturing에 대해 알아 보겠습니다.
+            NoEscaping, Escaping, AutoClosure에 대해 알아 보겠습니다.
         </h3>
         <div class="post-content-preview">
-            CaptureList
+            
 
-클로저는 정의 된 주변 컨텍스트에서 상수 및 변수를 캡처(Capturing) 할 수 있습니다.
-그런 다음 클로저는 상수와 변수를 정의한 원래 범위가 더 이상 존재하지 않더라도 본문 내에서 해당 상수와 변수의 값을 참조하고 수정할 수 있습니다.
-Value Type Capture
-12345678910111213141516171819......
+
+Swift 3.0 이전 - @escaping 이 기본
+
+
+Swift 3.0 이후 - @noescaping 이 기본
+
+
+@noescaping -&gt; @noescaping 가능
+
+
+@noescaping -&gt; @escaping   불가능
+
+
+@escaping   -&gt; @noescaping, @escaping 둘 다 가능
+
+
+
+@noesc......
         </div>
     </a>
     
@@ -454,34 +502,20 @@ Value Type Capture
 
 <div class="post-preview">
 
-    <a href="/2018/05/24/Swift/11.클로저 NoEscaping, Escaping, AutoClosure - 3/">
+    <a href="/2018/05/24/Swift/10.클로저 Capturing - 2/">
         <h2 class="post-title">
-            [Swift] 클로저 NoEscaping, Escaping, AutoClosure - 3
+            [Swift] 클로저 Capturing - 2
         </h2>
         <h3 class="post-subtitle">
-            NoEscaping, Escaping, AutoClosure에 대해 알아 보겠습니다.
+            Capturing에 대해 알아 보겠습니다.
         </h3>
         <div class="post-content-preview">
-            
+            CaptureList
 
-
-Swift 3.0 이전 - @escaping 이 기본
-
-
-Swift 3.0 이후 - @noescaping 이 기본
-
-
-@noescaping -&gt; @noescaping 가능
-
-
-@noescaping -&gt; @escaping   불가능
-
-
-@escaping   -&gt; @noescaping, @escaping 둘 다 가능
-
-
-
-@noesc......
+클로저는 정의 된 주변 컨텍스트에서 상수 및 변수를 캡처(Capturing) 할 수 있습니다.
+그런 다음 클로저는 상수와 변수를 정의한 원래 범위가 더 이상 존재하지 않더라도 본문 내에서 해당 상수와 변수의 값을 참조하고 수정할 수 있습니다.
+Value Type Capture
+12345678910111213141516171819......
         </div>
     </a>
     
@@ -521,38 +555,6 @@ Swift 3.0 이후 - @noescaping 이 기본
         <p class="post-meta" style="margin: 10px 0;">
             Posted by jinShine on
             2018-05-24
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Swift" title="Swift">Swift</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2018/05/23/Swift/7.접근제어(Access Control)/">
-        <h2 class="post-title">
-            [Swift] 접근제어(Access Control)
-        </h2>
-        <h3 class="post-subtitle">
-            접근제어에 대해 알아 보겠습니다.
-        </h3>
-        <div class="post-content-preview">
-            접근제어(Access Control)
-
-접근제어란 코드끼리 상호작용을 할 때 파일 간 또는 모듈 간에 접근을 제한할 수 있는 기능 입니다.
-이런 접근제어가 왜 필요할까요?
-객체지향 프로그래밍 패러다임에서 중요한 캡슐화와 은닉화를 구현하려면 외부에서 보이지 않거나 접근하지 말아야 할 코드가 있습니다. 불필요한 접근으로 의도치 않은 결과를 초래하거나 꼭 ......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by jinShine on
-            2018-05-23
         </p>
         <div class="tags">
             
@@ -620,7 +622,7 @@ Swift 3.0 이후 - @noescaping 이 기본
             
         
             
-            <a href="/tags/#iOS" title="iOS" rel="23">iOS</a>
+            <a href="/tags/#iOS" title="iOS" rel="24">iOS</a>
             
         
     </div>
@@ -675,6 +677,10 @@ Swift 3.0 이후 - @noescaping 이 기본
     <ul>
       
         <li>
+          <a href="/2019/01/19/iOS/UserDefaults.1/">[iOS] 파일시스템(File System)</a>
+        </li>
+      
+        <li>
           <a href="/2019/01/07/Swift/23.Swift 문자열 다루기/">[Swift] 문자열 다루기</a>
         </li>
       
@@ -690,10 +696,6 @@ Swift 3.0 이후 - @noescaping 이 기본
           <a href="/2019/01/01/RxSwift/1.RxSwift란/">[RxSwift] RxSwift의 기본 개념 - (1)</a>
         </li>
       
-        <li>
-          <a href="/2018/12/30/iOS/Moya란/">[iOS] Moya란?, Moya Tutorial</a>
-        </li>
-      
     </ul>
   </div>
 </h5>
@@ -702,7 +704,7 @@ Swift 3.0 이후 - @noescaping 이 기본
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">18</span></li></ul>
     </div>
 
         <hr>
